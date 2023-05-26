@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace CarLotSimulator
 {
@@ -6,12 +7,9 @@ namespace CarLotSimulator
     {
         static void Main(string[] args)
         {
-            //TODO
 
-            //Create a seperate class file called Car
-            //Car shall have the following properties: Year, Make, Model, EngineNoise, HonkNoise, IsDriveable
-            //Car shall have the following methods: MakeEngineNoise(), MakeHonkNoise()
-            //The methods should take one string parameter: the respective noise property
+            var carLot = new CarLot();
+            //TODO
 
 
             //Now that the Car class is created we can instanciate 3 new cars
@@ -24,10 +22,38 @@ namespace CarLotSimulator
 
             //*************BONUS X 2*************//
 
+            //dot notation
+            var charger = new Car();
+            charger.Make = "dodge";
+            charger.Model = "charger";
+            charger.Year = 1967;
+            charger.EnginNoise = "Vroom";
+            charger.HonkNoise = "beep beep";
+            charger.IsDrivable = false;
+
+            carLot.ParkingLot.Add(charger);
+            //object initializer syntax
+            var honda = new Car()
+            {
+                Make = "Honda",
+                Model = "Accord",
+                Year = 2021, EnginNoise = "Rumble", HonkNoise = "honk", IsDrivable = true };
+            carLot.ParkingLot.Add(honda);
+
+            var camry = new Car(2021, "Toyota", "Camry", "Vroom", "beep", false);
+            carLot.ParkingLot.Add(camry);
             //Create a CarLot class
             //It should have at least one property: a List of cars
             //Instanciate the a Carlot at the beginning of the program and as you create a car add the car to the list.
             //At the end iterate through the list printing each of car's Year, Make, and Model to the console
+
+            carLot.ParkingLot = new List<Car>() { charger, honda };
+            foreach (var car in carLot.ParkingLot)
+            {
+                Console.WriteLine($"this is a {car.Make}{car.Model} made is the year {car.Year}");
+                car.MakeEngineNoise(car.EnginNoise);
+                car.MakeHonkNoise(car.HonkNoise);
+            }
         }
     }
 }
