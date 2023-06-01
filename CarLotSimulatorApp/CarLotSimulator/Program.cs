@@ -31,6 +31,8 @@ namespace CarLotSimulator
             charger.HonkNoise = "beep beep";
             charger.IsDrivable = false;
 
+            Console.WriteLine($"number of cars at this point: {CarLot._numberOfCars}");
+
             carLot.ParkingLot.Add(charger);
             //object initializer syntax
             var honda = new Car()
@@ -40,8 +42,12 @@ namespace CarLotSimulator
                 Year = 2021, EnginNoise = "Rumble", HonkNoise = "honk", IsDrivable = true };
             carLot.ParkingLot.Add(honda);
 
+            Console.WriteLine($"number of cars at this point: {CarLot._numberOfCars}");
+
             var camry = new Car(2021, "Toyota", "Camry", "Vroom", "beep", false);
             carLot.ParkingLot.Add(camry);
+
+            Console.WriteLine($"number of cars at this point: {CarLot._numberOfCars}");
             //Create a CarLot class
             //It should have at least one property: a List of cars
             //Instanciate the a Carlot at the beginning of the program and as you create a car add the car to the list.
